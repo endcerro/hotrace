@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 14:51:46 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:23:20 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -28,9 +28,9 @@ void db::push(std::string const &key, std::string const &val)
 {
 	if (_size <= _ammount)
 		resize(_size * 2);
-	// else
-	// 	std::cout << "Big enough, pushing" << std::endl;
 	Entry *t = new Entry(key, val);
+	_hm.insert(new hashitem(t));
+	_hm.print();
 	_entr[_ammount] = t;
 	_ammount++;
 }
@@ -38,15 +38,15 @@ void db::push(std::string const &key, std::string const &val)
 void db::push(Entry *e)
 {
 	
-	if (search(e->gkey()) != 0)
+	if (search(e->gkey()) != 0) //SEARCH ON HASHMAP
 	{
-		// std::cout << "Push abort" << std::endl;
+		std::cout << "NO ENTRY" << std::endl;
 		return;
 	}
 	if (_size <= _ammount)
 		resize(_size * 2);
-	// else
-	// 	std::cout << "Big enough, pushing" << std::endl;
+	_hm.insert(new hashitem(e));
+	_hm.print();
 	_entr[_ammount] = e;
 	_ammount++;
 }
@@ -100,4 +100,16 @@ void db::print() const
 		if (_entr[i]->active())
 			std::cout << _entr[i]->gkey() << " : " << _entr[i]->gval() << std::endl;
 	}
+}
+
+void db::hmprint() const
+{
+	std::cout << "HM PRINT" << std::endl;
+	_hm.print();
+	// std::cout << "ammount is " << _ammount << std::endl;
+	// for (int i = 0; i < _ammount; i++)
+	// {
+	// 	if (_entr[i]->active())
+	// 		std::cout << _entr[i]->gkey() << " : " << _entr[i]->gval() << std::endl;
+	// }
 }

@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:26:55 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 15:17:05 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:18:18 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "entry.hpp"
+#include "hashmap.hpp"
 
 #define INPUT 1
 #define REMOVE 2
@@ -29,7 +30,7 @@ public:
 		void	push(Entry *e);
 		void 	pop(std::string key);
 		void	print() const;
-
+		void	hmprint() const;
 		Entry 	*search(std::string s);
 		Entry 	*query(std::string const key);
 
@@ -38,6 +39,7 @@ public:
 		int _ammount;
 		void	resize(unsigned int size);
 		int		_slot;
+		hashmap _hm;
 		// std::string *_keys;
 		// std::string *_values;
 
