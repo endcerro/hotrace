@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hashmap.cpp                                        :+:      :+:    :+:   */
+/*   hashitem.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:11:50 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 15:58:38 by edal--ce         ###   ########.fr       */
+/*   Created: 2021/04/06 15:38:17 by edal--ce          #+#    #+#             */
+/*   Updated: 2021/04/06 15:56:50 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "hashmap.hpp"
 
-hashmap::hashmap() : _f(0), _l(0)
-{}
-hashmap::hashmap(Entry *t)
-{
+#ifndef HASHITEM_HPP
+#define HASHITEM_HPP
 
-}
+#include <string>
+#include "entry.hpp"
 
-hashmap::~hashmap() {}
+class hashitem {
+	public:
+		hashitem(std::string key);
+		~hashitem() {};
+		size_t getHash() const;
+		void setNext(hashitem *a);
+		void setPrev(hashitem *a);
 
-void hashmap::insert(hashitem *i)
-{
-	hashitem *t = _f;
-	if (_f == 0)
-	{
-		_f = i;
-		_l = i;
-		return ;
-	}
-	else
-	{
-		while ( t != 0 && t->getHash() < i->getHash())
-		{
-			if ( t->getNext() == 0)
-			{
-				t->setNext(i);
-				i->setPrev(t);
-			}
-		}
-	}
-}
+		hashitem *getNext() const;
+		hashitem *getPrev() const;
+	private :
+		size_t					_hash;
+		hashitem 				*_next;
+		hashitem 				*_prev;
+		Entry 					*_entry;
+};
+
+#endif

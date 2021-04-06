@@ -8,7 +8,8 @@ OBJS		=	$(OBJ:%=$(OBJD)/%)
 SRC 		= 	db.cpp \
 				entry.cpp \
 				main.cpp	\
-				hashmap.cpp
+				hashmap.cpp	\
+				hashitem.cpp
 
 
 CFLAGS		=	-g3 -fsanitize=address#-Wall -Wextra -Werror #-march=native -pipe -O3 #-g3 -fsanitize=address #
@@ -24,6 +25,9 @@ $(OBJD)	:
 
 $(OBJD)/%.o	:	$(DIRSRC)/%.cpp
 					$(CC) -I ./$(INCLUDE) $(CFLAGS) -o $@ -c $<
+
+run : all
+	./$(NAME)
 
 clean :
 	rm -rf $(NAME)

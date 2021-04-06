@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 15:02:23 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 15:49:12 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include "db.hpp"
-
+#include "hashmap.hpp"
 void run(db &test)
 {
 	// test.print();
@@ -97,17 +97,26 @@ int main()
 	// std::string cache;
 	// std::getline(std::cin, cache); 
 	db test(5);
-	test.push("key1","val1");
-	test.push("key2","val2");
-	test.push("key3","val3");
-	test.push("key4","val4");
-	// std::cout << 1000 % 1000;
+	// test.push("key1","val1");
+	// test.push("key2","val2");
+	// test.push("key3","val3");
+	// test.push("key4","val4");
+	// // std::cout << 1000 % 1000;
 
-	// run(test);
-	feed(test);
-	// eval(test);
-	test.print();
+	// // run(test);
+	// feed(test);
+	// // eval(test);
+	// test.print();
 		// test.print();
+
+	hashmap m;
+	hashitem hash("hello world");
+	hashitem hash3("hello");
+	hashitem hash2("hello world2");
+
+	std::cout << hash.getHash() << std::endl;
+	std::cout << hash2.getHash() << std::endl;
+	std::cout << hash3.getHash() << std::endl;
 
 	return 0;
 }
