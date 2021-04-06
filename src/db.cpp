@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 18:10:59 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 18:13:48 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -38,7 +38,7 @@ void db::push(std::string const &key, std::string const &val)
 void db::push(Entry *e)
 {
 	
-	if (hmsearch(e->gkey()) != 0) //SEARCH ON HASHMAP
+	if (search(e->gkey()) != 0) //SEARCH ON HASHMAP
 	{
 		// std::cout << "NO ENTRY" << std::endl;
 		return;
@@ -55,6 +55,7 @@ Entry *db::search(std::string const key)
 {
 	// std::thread hm(disearch, key);
 	// std::thread al(hmsearch, key);
+	return hmsearch(key);
 
 }
 
@@ -96,7 +97,7 @@ Entry *db::hmsearch(std::string const key)
 
 Entry *db::query(std::string const key)
 {
-	Entry *e = hmsearch(key);
+	Entry *e = search(key);
 	if (e)
 		std::cout << e->gval() << std::endl;
 	else
@@ -108,7 +109,7 @@ Entry *db::query(std::string const key)
 void db::pop(std::string key)
 {
 	key.erase(0,1);
-	Entry *t = hmsearch(key);
+	Entry *t = search(key);
 	if (t == 0)
 		std::cout << "didn't found shit" << std::endl;
 	else
