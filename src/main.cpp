@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:49:44 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:53:53 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void prompt(db &db)
 	{
 		std::getline(std::cin, command);
 		eval(db, command);
-		db.hmprint();
+		// db.hmprint();
 	}	
 }
 
@@ -106,12 +106,12 @@ int main()
 	// // std::cout << 1000 % 1000;
 
 	// // run(test);
-	// feed(test);
+	feed(test);
 	// // eval(test);
 	// test.hmprint();
 	// test.gHashm().print();
 		// test.print();
-	prompt(test);
+	// prompt(test);
 	// hashmap m;
 	// hashitem *hash = new hashitem("1");
 	// hashitem *hash2 = new hashitem("2");

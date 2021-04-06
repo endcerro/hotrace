@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:50:13 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 18:10:59 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -40,7 +40,7 @@ void db::push(Entry *e)
 	
 	if (hmsearch(e->gkey()) != 0) //SEARCH ON HASHMAP
 	{
-		std::cout << "NO ENTRY" << std::endl;
+		// std::cout << "NO ENTRY" << std::endl;
 		return;
 	}
 	if (_size <= _ammount)
@@ -52,6 +52,13 @@ void db::push(Entry *e)
 }
 
 Entry *db::search(std::string const key)
+{
+	// std::thread hm(disearch, key);
+	// std::thread al(hmsearch, key);
+
+}
+
+Entry *db::disearch(std::string const key)
 {
 	for (int i = 0; i < _ammount; i++)
 	{
@@ -73,11 +80,11 @@ Entry *db::hmsearch(std::string const key)
 	std::hash<std::string> hash_fn;
 	size_t thash = hash_fn(key);
 
-	while (curr)
+	while (curr && curr->getHash() <= thash)
 	{
 		if (curr->getHash() == thash)
 		{
-			std::cout << "FOUND USING HASHMAP" << std::endl;
+			// std::cout << "FOUND USING HASHMAP" << std::endl;
 			return curr->_entry;
 		}
 		curr = curr->getNext();
@@ -101,7 +108,7 @@ Entry *db::query(std::string const key)
 void db::pop(std::string key)
 {
 	key.erase(0,1);
-	Entry *t = search(key);
+	Entry *t = hmsearch(key);
 	if (t == 0)
 		std::cout << "didn't found shit" << std::endl;
 	else
@@ -127,7 +134,7 @@ void db::print() const
 
 void db::hmprint() const
 {
-	std::cout << "HM PRINT" << std::endl;
+	// std::cout << "HM PRINT" << std::endl;
 	_hm.print();
 	// std::cout << "ammount is " << _ammount << std::endl;
 	// for (int i = 0; i < _ammount; i++)
