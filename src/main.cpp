@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:23:54 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:49:44 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void prompt(db &db)
 	{
 		std::getline(std::cin, command);
 		eval(db, command);
+		db.hmprint();
 	}	
 }
 
@@ -97,10 +98,11 @@ int main()
 	// std::string cache;
 	// std::getline(std::cin, cache); 
 	db test(5);
-	test.push("key1","val1");
-	test.push("key2","val2");
-	test.push("key3","val3");
+	// test.push("key1","val1");
+	// test.push("key2","val2");
+	// test.push("key3","val3");
 	// test.push("key4","val4");
+	// test.hmprint();
 	// // std::cout << 1000 % 1000;
 
 	// // run(test);
@@ -109,7 +111,7 @@ int main()
 	// test.hmprint();
 	// test.gHashm().print();
 		// test.print();
-
+	prompt(test);
 	// hashmap m;
 	// hashitem *hash = new hashitem("1");
 	// hashitem *hash2 = new hashitem("2");
@@ -146,8 +148,8 @@ int main()
 	// m.insert(hash6);
 	// std::cout << "Inserting " <<  hash6->getHash() << std::endl;
 	// m.print();
-		// m.print();
-	std::cout << "-------------" << std::endl;
+	// 	// m.print();
+	// std::cout << "-------------" << std::endl;
 
 
 

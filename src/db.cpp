@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:23:20 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:50:13 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -30,7 +30,7 @@ void db::push(std::string const &key, std::string const &val)
 		resize(_size * 2);
 	Entry *t = new Entry(key, val);
 	_hm.insert(new hashitem(t));
-	_hm.print();
+	// _hm.print();
 	_entr[_ammount] = t;
 	_ammount++;
 }
@@ -38,7 +38,7 @@ void db::push(std::string const &key, std::string const &val)
 void db::push(Entry *e)
 {
 	
-	if (search(e->gkey()) != 0) //SEARCH ON HASHMAP
+	if (hmsearch(e->gkey()) != 0) //SEARCH ON HASHMAP
 	{
 		std::cout << "NO ENTRY" << std::endl;
 		return;
@@ -46,7 +46,7 @@ void db::push(Entry *e)
 	if (_size <= _ammount)
 		resize(_size * 2);
 	_hm.insert(new hashitem(e));
-	_hm.print();
+	// _hm.print();
 	_entr[_ammount] = e;
 	_ammount++;
 }
@@ -64,9 +64,32 @@ Entry *db::search(std::string const key)
 	return (0);
 }
 
+Entry *db::hmsearch(std::string const key)
+{
+	hashitem p(key);
+	hashitem *curr = _hm._f;
+
+
+	std::hash<std::string> hash_fn;
+	size_t thash = hash_fn(key);
+
+	while (curr)
+	{
+		if (curr->getHash() == thash)
+		{
+			std::cout << "FOUND USING HASHMAP" << std::endl;
+			return curr->_entry;
+		}
+		curr = curr->getNext();
+	}
+
+	return (0);
+}
+
+
 Entry *db::query(std::string const key)
 {
-	Entry *e = search(key);
+	Entry *e = hmsearch(key);
 	if (e)
 		std::cout << e->gval() << std::endl;
 	else

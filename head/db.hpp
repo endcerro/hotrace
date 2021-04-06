@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:26:55 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:18:18 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:44:00 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ public:
 		void	print() const;
 		void	hmprint() const;
 		Entry 	*search(std::string s);
+		Entry 	*hmsearch(std::string s);
 		Entry 	*query(std::string const key);
 
 	private :

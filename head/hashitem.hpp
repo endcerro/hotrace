@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:38:17 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:13:17 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:48:35 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ class hashitem {
 
 		hashitem *getNext() const;
 		hashitem *getPrev() const;
+		Entry 					*_entry;
 	private :
 		size_t					_hash;
 		// std::string 			_base;
 		hashitem 				*_next;
 		hashitem 				*_prev;
-		Entry 					*_entry;
+		
 };
 
 #endif

@@ -19,10 +19,9 @@ hashitem::hashitem(Entry *e) : _entry(e)
 	// next->_prev = this;
 	std::hash<std::string> hash_fn;
 	_hash = hash_fn(e->gkey());
-
-
 	_entry = e;
 }
+
 
 void hashitem::setNext(hashitem *a)
 {
