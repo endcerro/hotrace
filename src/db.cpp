@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 17:39:15 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:39:41 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -36,7 +36,6 @@ void db::query(std::string const key)
 	std::string out = search(key);
 	if (key.compare("Not found"))
 	{
-		// std::cout << "true"<< std::endl;
 		std::cout << key << ": " << out << std::endl;
 	}
 	else
