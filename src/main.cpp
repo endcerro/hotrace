@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/06 17:53:53 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:08:05 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <fstream>
 #include "db.hpp"
 #include "hashmap.hpp"
+#include "dictree.hpp"
 void run(db &test)
 {
 	// test.print();
@@ -34,16 +35,17 @@ void eval(db &db, std::string command)
 		exit(0);
 	else if (command == "PRINT")
 	{
-		db.print();
+		// db.print();
 		return;
 	}
 	tmp = (char *)command.c_str();
 	test = command.find("=");
 	if (command[0] == '!')
 	{
+		std::cout << "delete commadn"<<std::endl;
 		if ( test != std::string::npos)
 			tmp[test] = 0;
-		db.pop(std::string(tmp));
+		// db.pop(std::string(tmp));
 	}
 	else if ( test != std::string::npos)
 	{
@@ -52,8 +54,8 @@ void eval(db &db, std::string command)
 			value = tmp + (sizeof(char) * (test + 1));
 			tmp[test] = 0;
 			key = tmp;
-			Entry *e = new Entry(key, value);
-			db.push(e);
+			// Entry *e = new Entry(key, value);
+			db.push(key, value);
 		}
 	}
 	else
@@ -63,7 +65,7 @@ void eval(db &db, std::string command)
 
 void feed(db &db)
 {
-	std::ifstream file("./dicos/generated-1");
+	std::ifstream file("./dicos/generated-0");
 	std::string line;
 	int i = 0;
 	if (file)  // same as: if (myfile.good())
@@ -98,16 +100,24 @@ int main()
 	// std::string cache;
 	// std::getline(std::cin, cache); 
 	db test(5);
-	// test.push("key1","val1");
-	// test.push("key2","val2");
-	// test.push("key3","val3");
+
+	// prompt(test);
+	// Dictree *d = new Dictree();
+	std::string memes = "àç";
+	std::cout << (int)memes.c_str()[0] << std::endl;
+	std::cout << (int)memes.c_str()[1] << std::endl;
+	// test.push("kéy", "val");
+	// d->search("key");
+	// test.search("key1");
+	// test.search("key2");
+	// test.search("key3");
 	// test.push("key4","val4");
 	// test.hmprint();
 	// // std::cout << 1000 % 1000;
 
 	// // run(test);
-	feed(test);
-	// // eval(test);
+	// feed(test);
+	// prompt(test);
 	// test.hmprint();
 	// test.gHashm().print();
 		// test.print();

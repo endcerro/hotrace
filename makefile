@@ -9,10 +9,12 @@ SRC 		= 	db.cpp \
 				entry.cpp \
 				main.cpp	\
 				hashmap.cpp	\
-				hashitem.cpp
+				hashitem.cpp \
+				dictree.cpp
 
 
-CFLAGS		=	-ofast #-g3 -fsanitize=address#-Wall -Wextra -Werror #-march=native -pipe -O3 #-g3 -fsanitize=address #
+
+CFLAGS		=	-ofast -g3 -fsanitize=address#-Wall -Wextra -Werror #-march=native -pipe -O3 #-g3 -fsanitize=address #
 CC			=	clang++
 
 all : $(NAME)
