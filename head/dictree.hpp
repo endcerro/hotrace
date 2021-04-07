@@ -23,9 +23,10 @@ class Dictree {
 		Dictree();
 		~Dictree();
 		void push(std::string key, std::string val);
-		void push(Entry *e);
-		void search(std::string s) const;
-		void search(Entry *e) const;
+		// void push(Entry *e);
+		std::string search(std::string s) const;
+		void pop(std::string s) const;
+		// void search(Entry *e) const;
 	private : 
 		//Chars are from 32 to 126 = 94
 		char _tab[C_NB];

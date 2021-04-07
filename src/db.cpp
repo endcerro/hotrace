@@ -6,23 +6,19 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 16:21:21 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:39:32 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
 
-db::db(int size) : _size(size), _ammount(0)
+db::db(int size)
 {
-	// _entr = (Entry **)malloc(sizeof(Entry *) * size);
 	_dt = new Dictree();
 }
 
 db::~db() 
 {
-	// for (int i = 0; i < _ammount; i++)
-	// 	delete _entr[i];
 	delete _dt;
-	// free (_entr);
 	std::cout << "freed db" << std::endl;
 }
 
@@ -39,39 +35,13 @@ void db::push(std::string const &key, std::string const &val)
 	// _ammount++;
 }
 
-// void db::push(Entry *e)
-// {
-	
-// 	if (search(e->gkey()) != 0) //SEARCH ON HASHMAP
-// 	{
-// 		// std::cout << "NO ENTRY" << std::endl;
-// 		return;
-// 	}
-// 	if (_size <= _ammount)
-// 		resize(_size * 2);
-// 	_hm.insert(new hashitem(e));
-// 	// _hm.print();
-// 	_entr[_ammount] = e;
-// 	_ammount++;
-// }
 
-// void db::push(Entry *e)
-// {
-// 	std::cout << "Push query for " << e->gkey() <<" "<<e->gval() <<std::endl;
-// 	_dt->push(e);
-// }
-
-// void db::push(std::string key, std::string val)
-// {
-// 	_dt->push(key, val);
-// }
-
-void db::search(std::string const key)
+std::string db::search(std::string const key)
 {
 	// std::cout << "Search query for " << key;
 	// std::thread hm(disearch, key);
 	// std::thread al(hmsearch, key);
-	_dt->search(key);
+	return (_dt->search(key));
 	// return 0;//hmsearch(key);
 
 }
@@ -114,9 +84,9 @@ void db::search(std::string const key)
 
 void db::query(std::string const key)
 {
-	search(key);
+	std::string out = search(key);
 	// if (e)
-	// 	std::cout << e->gval() << std::endl;
+	std::cout << key << ": " << out << std::endl;
 	// else
 	// 	std::cout << key << ": Not found" << std::endl;
 	// return e;
