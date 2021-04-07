@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:33:18 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 15:58:44 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:21:21 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "db.hpp"
@@ -28,7 +28,7 @@ db::~db()
 
 void db::push(std::string const &key, std::string const &val)
 {
-	std::cout << "Push query for " << key <<" "<<val <<std::endl; 
+	// std::cout << "Push query for " << key <<" "<<val <<std::endl; 
 	_dt->push(key, val);
 	// if (_size <= _ammount)
 	// 	resize(_size * 2);

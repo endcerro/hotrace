@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 16:08:05 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:20:55 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void eval(db &db, std::string command)
 	test = command.find("=");
 	if (command[0] == '!')
 	{
-		std::cout << "delete commadn"<<std::endl;
+		// std::cout << "delete commadn"<<std::endl;
 		if ( test != std::string::npos)
 			tmp[test] = 0;
 		// db.pop(std::string(tmp));
@@ -65,7 +65,7 @@ void eval(db &db, std::string command)
 
 void feed(db &db)
 {
-	std::ifstream file("./dicos/generated-0");
+	std::ifstream file("./dicos/generated-1");
 	std::string line;
 	int i = 0;
 	if (file)  // same as: if (myfile.good())
@@ -103,11 +103,11 @@ int main()
 
 	// prompt(test);
 	// Dictree *d = new Dictree();
-	std::string memes = "àç";
-	std::cout << (int)memes.c_str()[0] << std::endl;
-	std::cout << (int)memes.c_str()[1] << std::endl;
+	// std::string memes = "àç";
+	// std::cout << (int)memes.c_str()[0] << std::endl;
+	// std::cout << (int)memes.c_str()[1] << std::endl;
 	// test.push("kéy", "val");
-	// d->search("key");
+	// test.search("kéy");
 	// test.search("key1");
 	// test.search("key2");
 	// test.search("key3");
@@ -116,7 +116,7 @@ int main()
 	// // std::cout << 1000 % 1000;
 
 	// // run(test);
-	// feed(test);
+	feed(test);
 	// prompt(test);
 	// test.hmprint();
 	// test.gHashm().print();

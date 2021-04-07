@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:26:55 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 15:50:35 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:12:47 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ public:
 		void 	query(std::string const key);
 
 	private :
-		int _size;
-		int _ammount;
+		int 	_size;
+		int 	_ammount;
 		void	resize(unsigned int size);
 		int		_slot;
 		hashmap _hm;

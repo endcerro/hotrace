@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 14:00:21 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 16:08:19 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:19:06 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef DICTREE_HPP
@@ -29,7 +29,7 @@ class Dictree {
 	private : 
 		//Chars are from 32 to 126 = 94
 		char _tab[C_NB];
-		char _tabe[C_NB];
+		char _etab[C_NB];
 		std::string _str[C_NB];
 		Dictree **_trees;
 };
