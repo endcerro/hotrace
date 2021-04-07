@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 14:00:17 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 17:13:02 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:37:35 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ std::string Dictree::search(std::string key) const
 		if ( tmp != 0)
 			return (tmp->search(key.c_str() + 1 * sizeof(char)));
 	}
-	return ("Uh Oh");
+	return ("Not found");
 }
 
 int Dictree::pop(std::string key)
