@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 14:00:17 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 16:38:17 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:06:15 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ std::string Dictree::search(std::string key) const
 	if (key[1] == 0)
 	{
 		if (tab[key[0] - ' '] && _str[key[0] - ' '] != "")
+		{
 			return (_str[key[0] - ' ']);
+		}
 		else
 			return ("Not found");
 	}
@@ -59,16 +61,50 @@ std::string Dictree::search(std::string key) const
 	return ("Uh Oh");
 }
 
+int Dictree::pop(std::string key)
+{
+	Dictree *tmp;
+	char *tab;
+	if (key[0] < 0)
+	{
+		key[0] *= -1;
+		tab = (char*)_etab;
+	}
+	else
+		tab = (char*)_tab;
+
+	if (key[1] == 0)
+	{
+		if (tab[key[0] - ' '] && _str[key[0] - ' '] != "")
+		{
+			_str[key[0] - ' ']= "";
+			tab[key[0] - ' '] -= 1;	
+			return (1);
+		}
+		else
+			return (0);
+	}
+	else if (tab[key[0] - ' ' ] != 0)
+	{
+		tmp = _trees[key[0] - ' '];
+		if ( tmp != 0)
+		{
+			int t = tmp->pop(key.c_str() + 1 * sizeof(char));
+			return (t);
+		}
+	}
+	return (0);
+}
+
 void Dictree::push(std::string key, std::string val)
 {
+	Dictree *tmp;
 	char *tab = (char*)_tab;
 	if (key[0] < 0)
 	{
 		key[0] *= -1;	
 		tab = (char*)_etab;
 	}
-
-	Dictree *tmp;
 	if (key[1] == 0)
 	{
 		tab[key[0] - ' ']++;
@@ -80,7 +116,8 @@ void Dictree::push(std::string key, std::string val)
 		_trees[key[0] - ' ']->push(key.c_str() + 1 * sizeof(char),val);
 	else
 	{
-		_trees[key[0] - ' '] = new Dictree();
+		if (_trees[key[0] - ' '] == 0)
+			_trees[key[0] - ' '] = new Dictree();
 		tab[key[0] - ' ' ]++;	
 		_trees[key[0] - ' ']->push(key.c_str() + 1 * sizeof(char),val);
 	}

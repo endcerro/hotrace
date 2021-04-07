@@ -6,7 +6,7 @@
 /*   By: edal--ce <edal--ce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:05:40 by edal--ce          #+#    #+#             */
-/*   Updated: 2021/04/07 16:20:55 by edal--ce         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:52:47 by edal--ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include "db.hpp"
-#include "hashmap.hpp"
+// #include "hashmap.hpp"
 #include "dictree.hpp"
 void run(db &test)
 {
@@ -45,7 +45,7 @@ void eval(db &db, std::string command)
 		// std::cout << "delete commadn"<<std::endl;
 		if ( test != std::string::npos)
 			tmp[test] = 0;
-		// db.pop(std::string(tmp));
+		db.pop(std::string(tmp));
 	}
 	else if ( test != std::string::npos)
 	{
@@ -116,8 +116,8 @@ int main()
 	// // std::cout << 1000 % 1000;
 
 	// // run(test);
-	feed(test);
-	// prompt(test);
+	// feed(test);
+	prompt(test);
 	// test.hmprint();
 	// test.gHashm().print();
 		// test.print();

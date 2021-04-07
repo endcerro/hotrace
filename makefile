@@ -6,10 +6,7 @@ OBJ			=	$(SRC:.cpp=.o)
 OBJS		=	$(OBJ:%=$(OBJD)/%)
 
 SRC 		= 	db.cpp \
-				entry.cpp \
 				main.cpp	\
-				hashmap.cpp	\
-				hashitem.cpp \
 				dictree.cpp
 
 
